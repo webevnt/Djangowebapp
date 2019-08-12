@@ -1,0 +1,29 @@
+{% extends 'socialapp/base.html' %}
+{% block body_block %}
+  <div class="container">
+  <br><br><br><br><br>
+    <div>
+      <h1>Login here :</h1>
+
+        <div class="column is-5-widescreen is-5-desktop">
+	       <div class="checkout-form">
+		      <div class="checkout-step">
+                  <form method="post" action="{% url 'socialapp:login' %}">
+                   {% csrf_token %}
+                      <div class="checkout-field">
+                          <label for="username">Username:</label>
+                          <input type="text" name="username" placeholder="Username">
+                      </div>
+                      <div class="checkout-field">
+                          <label for="password">Password:</label>
+                          <input type="password" name="password" placeholder="Password">
+                      </div>
+<input type="submit" class="btn btn-primary" name="" value="Login">
+</form>
+              </div>
+           </div>
+        </div>
+
+</div>
+  </div>
+{% endblock %}

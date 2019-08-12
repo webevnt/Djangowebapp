@@ -1,0 +1,349 @@
+{% extends 'socialapp/base.html' %}
+
+{% block head %}
+<title>Profile</title>
+
+    {% load static %}
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "vendor/metisMenu/metisMenu.min.css" %}" rel="stylesheet">
+    <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/google-type.css" %}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Megrim|Roboto+Slab:300' rel='stylesheet' type='text/css'>
+
+
+
+{% endblock %}
+
+{% block body_block %}
+    <br><br><br><br>
+<div class="container">
+
+
+    <style>
+
+.containerm{
+  width: 650px;
+  height: 500px;
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media only screen and (max-width:650px){
+  .container{
+    width: 95%;
+  }
+}
+.head{
+  grid-column-start: 1;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 13;
+
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+}
+.head-photo{
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: sepia(40%);
+  -webkit-filter: sepia(40%);
+  -webkit-filter: blur(0.8px);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 13;
+  z-index: -1;
+}
+
+.bottom{
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 9;
+  grid-row-end: 13;
+  border-top: 1px solid rgba(255,255,255,.45);
+  display: flex;
+}
+.top{
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 9;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content:center;
+  align-content:center;
+}
+.card-container {
+  height: 180px;
+  perspective: 600px;
+  position: relative;
+  width: 180px;
+  margin: 0 auto;
+}
+.card {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  transition-delay: 0.1s;
+  width: 100%;
+  border-radius: 50%;
+}
+.photo{
+  background: url(https://images.unsplash.com/photo-1541044714743-82d583a7bd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80);
+  background-size: cover;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  object-fit: cover;
+}
+.hover{
+  font-size: 34px;
+  position: absolute;
+  bottom: 0;
+  left: 75%;
+  z-index: 99;
+  opacity: 0;
+  animation: hover 10s 1;
+}
+@keyframes hover{
+  0%{
+    opacity: 0.3;
+  }
+  90%{
+    opacity: 0.3;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+.photo-back{
+  background: white;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  color: #0087cc;
+  line-height: 150px;
+  text-align: center;
+  transform: rotateY(180deg);
+  font-size: 2.7em;
+}
+.photo-back a{
+  color: hsl(0, 0%, 22%);
+}
+
+.text{
+  background: white;
+  width: 200px;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+}
+.text:after {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.text:after {
+	border-bottom-color: white;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+h2{
+  margin: 0;
+  letter-spacing: 1px;
+}
+h3{
+  margin: 0;
+  font-style: italic;
+  color: hsl(0, 0%, 67%);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.bottom a{
+  flex: 1;
+  text-align: center;
+  justify-content:center;
+    align-content:center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  transition: all 0.5s ease;
+  position: relative;
+}
+.bottom a:not(:first-child):before {
+    content: '';
+    border-left: 2px solid rgba(255,255,255,.45);
+    position: absolute;
+    height: 80%;
+    left: 0;
+    top: 10%;
+}
+.bottom a:hover i{
+  margin-bottom: 5px;
+}
+.right{
+  grid-column-start: 10;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 13;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.right a{
+  flex: 1;
+  text-align: center;
+  justify-content:center;
+    align-content:center;
+  color: hsl(0, 0%, 67%);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  transition: color 0.5s ease;
+}
+#active{
+  color: hsl(0, 0%, 20%);
+}
+.right a i, .bottom a i {
+  font-size: 35px;
+  margin-bottom: 15px;
+  transition: margin 0.3s ease, font-size 0.5s ease;
+}
+.right a:hover {
+  color: hsl(0,0%,20%);
+}
+@media only screen and (max-height:500px){
+  .container{
+    height: 95%;
+  }
+  .card-container {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media only screen and (max-width:420px){
+  .bottom a, .right a{
+    font-size: 1em;
+  }
+  .bottom a i, .right a i{
+    font-size:25px;
+  }
+  .top .text{
+    width: 80%;
+  }
+}
+
+</style>
+</div>
+
+
+
+<div id="wrapper">
+
+        <!-- Navigation -->
+ <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="container-fluid section-astronomer" id="mattraoul">
+            <div class="container">
+                <h2>Your Profile</h2>
+                <p><br><br></p>
+                <p><div class="containerm">
+  <div class="head">
+    <div class="head-photo"></div>
+    <div class="top">
+      <div class="card-container">
+        <i class="far fa-hand-point-up hover"></i>
+        <div class="card">
+          <div class="photo"></div>
+        </div>
+      </div>
+      <div class="text"><h3><b>{{ user }}</b></h3><h3>{{ user.email }}</h3></div>
+    </div>
+    <div class="bottom">
+      <a href="#"><i class="glyphicon glyphicon-link"></i>Website</a>
+      <a href="#"><i class="glyphicon glyphicon-share"></i>Share</a>
+      <a href="#"><i class="glyphicon glyphicon-heart"></i>Hire</a>
+    </div>
+  </div>
+</div>
+</p>
+                <div class="stars"></div>
+            </div>
+        </div>
+
+        {% load static %}
+        <script src="{% static "scripts/jquery-1.11.1.min.js" %}"></script>
+        <script src="{% static "scripts/scripts.js" %}"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-51931-2', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    {% load static %}
+    <script src="{% static "vendor/jquery/jquery.min.js" %}" ></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "vendor/metisMenu/metisMenu.min.js" %}"></script>
+
+
+
+{% endblock %}

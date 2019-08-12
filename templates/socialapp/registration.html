@@ -1,0 +1,33 @@
+{% extends "socialapp/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+    <br><br><br><br>
+  <div class="container">
+    <div>
+      {% if registered %}
+        <h1>Thank you for registering!</h1>
+      {% else %}
+        <h1>Register your detail, Here</h1>
+
+<div class="column is-5-widescreen is-5-desktop">
+	<div class="checkout-form">
+		<div class="checkout-step">
+			<form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+				<div class="checkout-field">
+				{{ user_form }}
+				</div>
+                <div class="checkout-field">
+				{{ profile_form}}
+				</div>
+				<div class="checkout-button-wrap">
+					<input type="submit" class="checkout-button button is-primary" value="Submit">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

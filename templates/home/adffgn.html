@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="column is-5-widescreen is-5-desktop"></div>
+</body>
+</html>
+
+
+<div class="container">
+    {% for post in posts %}
+     <div class="row">
+        <div class="col-md-6">
+            <div class="photo-grid">
+        <figure class="grid-figure"><div class="grid-photo-wrap">
+          <a href="/view/BAcyDyQwcXX"><img class="grid-photo" src="#" alt="Lunch #hamont">
+          </a>
+          <span>
+            <span class="likes-heart">56</span>
+          </span>
+          </div>
+          <figcaption><p>{{ post.post }}</p>
+            <div class="control-buttons"><button class="likes">♥
+          </button>
+          <a class="button" href="/view/BAcyDyQwcXX">
+            <span class="comment-count">
+              <span class="speech-bubble"></span>
+            </span>
+          </a>
+        </div>
+      </figcaption>
+    </figure>
+    </div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+</div>
